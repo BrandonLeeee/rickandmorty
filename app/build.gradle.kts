@@ -4,6 +4,7 @@ plugins {
     alias(libs.plugins.kotlin.compose)
     id("kotlin-kapt")
     id("com.google.dagger.hilt.android")
+    kotlin("plugin.serialization") version "1.8.10"
 }
 
 android {
@@ -73,6 +74,10 @@ dependencies {
 
     // Jetpack Navigation Compose
     implementation ("androidx.navigation:navigation-compose:2.8.5")
+
+    implementation("org.jetbrains.kotlinx:kotlinx-coroutines-core:1.6.4")
+    implementation("org.jetbrains.kotlinx:kotlinx-serialization-json:1.5.0")
+    implementation("com.squareup.okhttp3:okhttp:4.10.0")
 }
 kapt {
     correctErrorTypes = true

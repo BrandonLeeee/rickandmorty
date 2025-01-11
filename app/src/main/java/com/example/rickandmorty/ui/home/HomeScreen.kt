@@ -1,3 +1,5 @@
+package com.example.rickandmorty.ui.home
+
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
@@ -40,7 +42,7 @@ fun HomeScreen(
         Card(
             "Worlds",
             "https://static.wikia.nocookie.net/rickandmorty/images/f/fc/S2e5_Earth.png/revision/latest?cb=20160926065208",
-            Routes.Worlds.route
+            Routes.World.route
         ),
         Card(
             "Episodes",

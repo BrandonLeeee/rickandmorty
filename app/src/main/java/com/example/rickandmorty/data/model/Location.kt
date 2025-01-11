@@ -8,3 +8,8 @@ data class Location(
     val residents: List<String>,
     val url: String
 )
+
+data class LocationResponse(
+    val info: Info,
+    val results: List<Location>
+)
