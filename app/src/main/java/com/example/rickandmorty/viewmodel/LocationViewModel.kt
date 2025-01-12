@@ -6,7 +6,7 @@ import androidx.lifecycle.viewModelScope
 import com.example.rickandmorty.data.model.Info
 import com.example.rickandmorty.data.model.Location
 import com.example.rickandmorty.repository.LocationRepository
-import com.example.rickandmorty.ui.util.SharedState
+import com.example.rickandmorty.util.SharedState
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow

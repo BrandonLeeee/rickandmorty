@@ -1,7 +1,7 @@
 package com.example.rickandmorty.viewmodel
 
 import androidx.lifecycle.ViewModel
-import com.example.rickandmorty.ui.util.SharedState
+import com.example.rickandmorty.util.SharedState
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.StateFlow
 import javax.inject.Inject

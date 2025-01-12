@@ -1,4 +1,4 @@
-package com.example.rickandmorty.ui.util
+package com.example.rickandmorty.util
 
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow

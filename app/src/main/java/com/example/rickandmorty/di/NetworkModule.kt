@@ -1,7 +1,7 @@
 package com.example.rickandmorty.di
 
 import com.example.rickandmorty.data.remote.ApiService
-import com.example.rickandmorty.ui.util.SharedState
+import com.example.rickandmorty.util.SharedState
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
