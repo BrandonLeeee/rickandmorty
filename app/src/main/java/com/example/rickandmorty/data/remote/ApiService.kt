@@ -24,8 +24,13 @@ interface ApiService {
         @Path("id") id: Int
     ): Character
 
-    @GET("location")
+    @GET
     suspend fun getLocation(
-        @Query("page") page: Int
+        @Url url: String
+    ): LocationResponse
+
+    @GET("location")
+    suspend fun getLocationByName(
+        @Query("name") name: String
     ): LocationResponse
 }

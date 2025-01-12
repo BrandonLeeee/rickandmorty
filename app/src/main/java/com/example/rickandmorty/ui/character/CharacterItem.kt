@@ -29,10 +29,8 @@ import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
-import androidx.navigation.NavController
 import coil.compose.rememberAsyncImagePainter
 import com.example.rickandmorty.data.model.Character
-import com.example.rickandmorty.ui.navigation.Routes
 
 @Composable
 fun CharacterItem(character: Character, onDetailsClick: () -> Unit) {

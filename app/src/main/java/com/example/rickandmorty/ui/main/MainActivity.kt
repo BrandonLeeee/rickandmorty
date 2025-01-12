@@ -18,8 +18,10 @@ class MainActivity : ComponentActivity() {
         enableEdgeToEdge()
         setContent {
             RickAndMortyTheme {
-                Scaffold(modifier = Modifier
-                    .fillMaxSize()) { innerPadding ->
+                Scaffold(
+                    modifier = Modifier
+                        .fillMaxSize()
+                ) { innerPadding ->
                     AppNavigation(innerPadding)
                 }
             }

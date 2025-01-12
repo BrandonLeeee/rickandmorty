@@ -2,10 +2,12 @@ package com.example.rickandmorty.ui.character
 
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
+import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
+import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
@@ -20,6 +22,7 @@ import androidx.compose.material3.Icon
 import androidx.compose.material3.IconButton
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.DisposableEffect
 import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
@@ -59,16 +62,24 @@ fun CharacterListScreen(
 
     val isLoading by sharedViewModel.isLoading.collectAsState()
     val characters by viewModel.characters.collectAsState()
-    val page by viewModel.currentPage.collectAsState()
-    val query by viewModel.query.collectAsState()
+    val page by sharedViewModel.currentPage.collectAsState()
+    val query by sharedViewModel.query.collectAsState()
     val info by viewModel.info.collectAsState()
     var isNavigating by remember { mutableStateOf(false) }
 
     LaunchedEffect(page) {
-        viewModel.fetchCharacters(sharedViewModel)
+        viewModel.fetchCharacters()
+        println("Character: $characters")
     }
+    DisposableEffect(Unit) {
+        onDispose {
+            sharedViewModel.resetState()
+        }
+    }
+
     Column(
         modifier = Modifier
+            .fillMaxSize()
             .background(
                 Brush.verticalGradient(
                     colors = listOf(
@@ -134,7 +145,7 @@ fun CharacterListScreen(
 
             SearchComponent(
                 query = query,
-                onQueryChange = { viewModel.fetchCharactersByName(sharedViewModel, it) }
+                onQueryChange = { viewModel.fetchCharactersByName(it) }
             )
 
             Spacer(modifier = Modifier.height(8.dp))
@@ -142,6 +153,25 @@ fun CharacterListScreen(
             when {
                 isLoading -> {
                     LoadingProgress()
+                }
+
+                characters.isEmpty() -> {
+                    Box(
+                        modifier = Modifier
+                            .fillMaxSize()
+                            .padding(16.dp),
+                        contentAlignment = Alignment.Center
+                    ) {
+                        Text(
+                            text = "No characters found for your search.",
+                            modifier = Modifier
+                                .padding(16.dp)
+                                .fillMaxWidth(),
+                            color = Color.White,
+                            textAlign = TextAlign.Center,
+                            fontSize = 18.sp
+                        )
+                    }
                 }
 
                 else -> {
