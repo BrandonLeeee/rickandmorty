@@ -23,6 +23,9 @@ import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
+import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.remember
+import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.geometry.Offset
@@ -41,6 +44,7 @@ import androidx.navigation.NavController
 import com.example.rickandmorty.R
 import com.example.rickandmorty.ui.components.LoadingProgress
 import com.example.rickandmorty.ui.components.SearchComponent
+import com.example.rickandmorty.ui.navigation.Routes
 import com.example.rickandmorty.viewmodel.CharacterViewModel
 import com.example.rickandmorty.viewmodel.SharedViewModel
 
@@ -58,17 +62,21 @@ fun CharacterListScreen(
     val page by viewModel.currentPage.collectAsState()
     val query by viewModel.query.collectAsState()
     val info by viewModel.info.collectAsState()
+    var isNavigating by remember { mutableStateOf(false) }
 
-    LaunchedEffect(page) { viewModel.fetchCharacters(sharedViewModel, page) }
+    LaunchedEffect(page) {
+        viewModel.fetchCharacters(sharedViewModel)
+    }
     Column(
-        modifier = Modifier.background(
-            Brush.verticalGradient(
-                colors = listOf(
-                    Color(0xFF1B1B1B),
-                    Color(0xFF0D0D0D)
+        modifier = Modifier
+            .background(
+                Brush.verticalGradient(
+                    colors = listOf(
+                        Color(0xFF1B1B1B),
+                        Color(0xFF0D0D0D)
+                    )
                 )
             )
-        )
             .padding(innerPadding)
     ) {
         Spacer(modifier = Modifier.height(20.dp))
@@ -145,7 +153,14 @@ fun CharacterListScreen(
                         verticalArrangement = Arrangement.spacedBy(8.dp)
                     ) {
                         items(characters) { character ->
-                            CharacterItem(character)
+                            CharacterItem(
+                                character,
+                                onDetailsClick = {
+                                    if (!isNavigating) {
+                                        isNavigating = true
+                                        navController.navigate("${Routes.CharacterDetails.route}?${character.id}")
+                                    }
+                                })
                         }
                     }
                 }

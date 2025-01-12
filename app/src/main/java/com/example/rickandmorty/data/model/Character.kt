@@ -1,7 +1,5 @@
 package com.example.rickandmorty.data.model
 
-import android.icu.text.IDNA
-
 data class Character(
     val id: Int,
     val name: String,
@@ -13,7 +11,7 @@ data class Character(
     val location: Location,
     val image: String,
     val episode: List<String>,
-    val url: String
+    val url: String,
 )
 
 data class Origin(
