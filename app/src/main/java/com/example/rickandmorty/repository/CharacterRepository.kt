@@ -1,8 +1,6 @@
 package com.example.rickandmorty.repository
 
-import com.example.rickandmorty.data.model.Character
 import com.example.rickandmorty.data.model.CharacterResponse
-import com.example.rickandmorty.data.model.LocationResponse
 import com.example.rickandmorty.data.remote.ApiService
 import javax.inject.Inject
 import javax.inject.Singleton
