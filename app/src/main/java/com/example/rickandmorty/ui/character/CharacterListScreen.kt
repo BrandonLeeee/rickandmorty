@@ -144,6 +144,7 @@ fun CharacterListScreen(
             Spacer(modifier = Modifier.height(8.dp))
 
             SearchComponent(
+                searchText = "Search Character",
                 query = query,
                 onQueryChange = { viewModel.fetchCharactersByName(it) }
             )

@@ -1,4 +1,4 @@
-package com.example.rickandmorty.ui.world
+package com.example.rickandmorty.ui.location
 
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
@@ -33,7 +33,7 @@ import com.example.rickandmorty.R
 import com.example.rickandmorty.data.model.Location
 
 @Composable
-fun WorldItem(location: Location) {
+fun LocationItem(location: Location) {
     Card(
         modifier = Modifier
             .fillMaxWidth()

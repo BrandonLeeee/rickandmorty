@@ -1,4 +1,4 @@
-package com.example.rickandmorty.ui.world
+package com.example.rickandmorty.ui.location
 
 
 import androidx.compose.foundation.background
@@ -50,7 +50,7 @@ import com.example.rickandmorty.viewmodel.SharedViewModel
 
 
 @Composable
-fun WorldListScreen(
+fun LocationListScreen(
     innerPadding: PaddingValues,
     viewModel: LocationViewModel = hiltViewModel(),
     sharedViewModel: SharedViewModel = hiltViewModel(),
@@ -58,7 +58,7 @@ fun WorldListScreen(
 ) {
 
     val isLoading by sharedViewModel.isLoading.collectAsState()
-    val worlds by viewModel.location.collectAsState()
+    val locations by viewModel.location.collectAsState()
     val page by sharedViewModel.currentPage.collectAsState()
     val query by sharedViewModel.query.collectAsState()
     val info by viewModel.info.collectAsState()
@@ -136,6 +136,7 @@ fun WorldListScreen(
             Spacer(modifier = Modifier.height(8.dp))
 
             SearchComponent(
+                searchText = "Search Location",
                 query = query,
                 onQueryChange = { viewModel.fetchLocationByName(it) }
             )
@@ -147,7 +148,7 @@ fun WorldListScreen(
                     LoadingProgress()
                 }
 
-                worlds.isEmpty() -> {
+                locations.isEmpty() -> {
                     Box(
                         modifier = Modifier
                             .fillMaxSize()
@@ -165,6 +166,7 @@ fun WorldListScreen(
                         )
                     }
                 }
+
                 else -> {
 
                     LazyVerticalGrid(
@@ -173,8 +175,8 @@ fun WorldListScreen(
                         horizontalArrangement = Arrangement.spacedBy(8.dp),
                         verticalArrangement = Arrangement.spacedBy(8.dp)
                     ) {
-                        items(worlds) { world ->
-                            WorldItem(world)
+                        items(locations) { location ->
+                            LocationItem(location)
                         }
                     }
                 }

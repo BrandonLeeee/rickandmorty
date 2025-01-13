@@ -8,19 +8,15 @@ import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
 import androidx.navigation.navArgument
-import com.example.rickandmorty.ui.SplashScreen
 import com.example.rickandmorty.ui.character.CharacterDetails
 import com.example.rickandmorty.ui.character.CharacterListScreen
 import com.example.rickandmorty.ui.home.HomeScreen
-import com.example.rickandmorty.ui.world.WorldListScreen
+import com.example.rickandmorty.ui.location.LocationListScreen
 
 @Composable
 fun AppNavigation(innerPadding: PaddingValues) {
     val navController = rememberNavController()
-    NavHost(navController = navController, startDestination = Routes.SplashScreen.route) {
-        composable(Routes.SplashScreen.route) {
-            SplashScreen(navController = navController)
-        }
+    NavHost(navController = navController, startDestination = Routes.HomeScreen.route) {
 
         composable(Routes.HomeScreen.route) {
             HomeScreen(innerPadding, navController = navController)
@@ -49,8 +45,8 @@ fun AppNavigation(innerPadding: PaddingValues) {
             }
         }
 
-        composable(Routes.World.route) {
-            WorldListScreen(innerPadding, navController = navController)
+        composable(Routes.Location.route) {
+            LocationListScreen(innerPadding, navController = navController)
         }
     }
 }

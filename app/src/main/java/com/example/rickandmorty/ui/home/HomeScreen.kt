@@ -44,18 +44,18 @@ fun HomeScreen(
     val cardInfo = listOf(
         Card(
             "Characters",
-            "https://image-cdn.netflixjunkie.com/wp-content/uploads/2022/09/rick-and-morty-season-5-episode-2-spoilers-premiere-adult-swim-1273672.jpg",
+            R.drawable.characters,
             Routes.CharacterList.route
         ),
         Card(
             "Worlds",
-            "https://static.wikia.nocookie.net/rickandmorty/images/f/fc/S2e5_Earth.png/revision/latest?cb=20160926065208",
-            Routes.World.route
+            R.drawable.locations,
+            Routes.Location.route
         ),
         Card(
-            "Episodes",
-            "https://ew.com/thmb/5oTdaKvL46cQ3gyq06d4S792qhg=/1500x0/filters:no_upscale():max_bytes(150000):strip_icc()/02-Rick-and-Morty-Rixty-Minutes-S1-E8-051123-038ae20bb7c8456c8dbfad67f6f9880a.jpg",
-            Routes.Episodes.route
+            "Quiz",
+            R.drawable.quiz,
+            Routes.Quiz.route
         )
     )
 
@@ -71,7 +71,7 @@ fun HomeScreen(
                 )
             )
             .padding(innerPadding),
-        contentAlignment = Alignment.Center // Center the LazyColumn
+        contentAlignment = Alignment.Center
     ) {
         Column(horizontalAlignment = Alignment.CenterHorizontally) {
             Image(
@@ -110,7 +110,7 @@ fun CardItem(card: Card, navController: NavController) {
         Box {
             // Background image with gradient overlay
             Image(
-                painter = rememberAsyncImagePainter(card.imageUrl),
+                painter = rememberAsyncImagePainter(card.image),
                 contentDescription = card.name,
                 modifier = Modifier
                     .fillMaxWidth()

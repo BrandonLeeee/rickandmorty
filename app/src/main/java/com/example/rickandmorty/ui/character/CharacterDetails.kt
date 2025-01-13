@@ -84,7 +84,11 @@ fun CharacterDetails(
                     ) {
                         item {
                             // Character Image and Name Header
-                            CharacterHeader(name = char.name, imageUrl = char.image, status = char.status)
+                            CharacterHeader(
+                                name = char.name,
+                                imageUrl = char.image,
+                                status = char.status
+                            )
 
                             Spacer(modifier = Modifier.height(16.dp))
 

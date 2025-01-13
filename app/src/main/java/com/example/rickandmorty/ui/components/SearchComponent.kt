@@ -21,6 +21,7 @@ import androidx.compose.ui.unit.sp
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun SearchComponent(
+    searchText: String,
     query: String,
     onQueryChange: (String) -> Unit
 ) {
@@ -36,7 +37,7 @@ fun SearchComponent(
             ),
         placeholder = {
             Text(
-                "Search Characters",
+                searchText,
                 color = Color(0xFF00FFCC),
                 fontSize = 16.sp,
                 fontWeight = FontWeight.Bold
