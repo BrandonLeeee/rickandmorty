@@ -29,9 +29,7 @@ A simple Android app built using Kotlin, Jetpack Compose, and Retrofit that retr
 
 `1.`Clone the repository:
 ```bash
- 
-git clone https://github.com/yourusername/RickAndMortyApp.git
- 
+git clone https://github.com/BrandonLeeee/rickandmorty
 ```
 `2.` Open the project in Android Studio.
 
