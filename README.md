@@ -21,6 +21,7 @@ A simple Android app built using Kotlin, Jetpack Compose, and Retrofit that retr
 ## Screenshots
 ![Main Screen](https://github.com/user-attachments/assets/aa2687ee-9b21-4529-a388-fa06a42c78c7)
 ![Character List](https://github.com/user-attachments/assets/2fd50136-41ea-4927-81b7-b6258b5cad17)
+<br/>
 ![Character Details](https://github.com/user-attachments/assets/18203901-5ce0-447e-b00d-c57514f79570)
 ![Location List](https://github.com/user-attachments/assets/07c7fb77-3f79-4ebe-9c6f-b098871ba44f)
 
