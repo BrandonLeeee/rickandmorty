@@ -48,7 +48,7 @@ fun HomeScreen(
             Routes.CharacterList.route
         ),
         Card(
-            "Worlds",
+            "Locations",
             R.drawable.locations,
             Routes.Location.route
         ),
