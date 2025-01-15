@@ -12,6 +12,8 @@ import com.example.rickandmorty.ui.character.CharacterDetails
 import com.example.rickandmorty.ui.character.CharacterListScreen
 import com.example.rickandmorty.ui.home.HomeScreen
 import com.example.rickandmorty.ui.location.LocationListScreen
+import com.example.rickandmorty.ui.quiz.QuizScreen
+import com.example.rickandmorty.ui.quiz.StartQuiz
 
 @Composable
 fun AppNavigation(innerPadding: PaddingValues) {
@@ -24,6 +26,14 @@ fun AppNavigation(innerPadding: PaddingValues) {
 
         composable(Routes.CharacterList.route) {
             CharacterListScreen(innerPadding, navController = navController)
+        }
+
+        composable(Routes.QuizScreen.route){
+            QuizScreen(innerPadding, navController = navController)
+        }
+
+        composable(Routes.StartQuiz.route){
+            StartQuiz(innerPadding, navController = navController)
         }
 
         composable(
