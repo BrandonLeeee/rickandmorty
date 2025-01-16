@@ -8,7 +8,7 @@ import retrofit2.http.Path
 import retrofit2.http.Query
 import retrofit2.http.Url
 
-interface ApiService {
+interface CharacterApiService {
     @GET
     suspend fun getCharacters(
         @Url url: String

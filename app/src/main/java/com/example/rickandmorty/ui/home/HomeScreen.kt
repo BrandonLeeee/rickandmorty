@@ -55,7 +55,7 @@ fun HomeScreen(
         Card(
             "Quiz",
             R.drawable.quiz,
-            Routes.Quiz.route
+            Routes.StartQuiz.route
         )
     )
 

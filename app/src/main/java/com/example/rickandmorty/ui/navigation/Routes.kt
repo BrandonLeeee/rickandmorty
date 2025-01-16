@@ -7,4 +7,5 @@ sealed class Routes(val route: String) {
     object Location : Routes("locations")
     object QuizScreen : Routes("quizScreen")
     object StartQuiz : Routes("startQuiz")
+    object EndQuiz : Routes("endQuiz")
 }

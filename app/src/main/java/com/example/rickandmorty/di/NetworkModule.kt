@@ -1,6 +1,9 @@
 package com.example.rickandmorty.di
 
-import com.example.rickandmorty.data.remote.ApiService
+import com.example.rickandmorty.data.remote.CharacterApiService
+import com.example.rickandmorty.data.remote.CharacterRetrofit
+import com.example.rickandmorty.data.remote.QuizApiService
+import com.example.rickandmorty.data.remote.QuizRetrofit
 import com.example.rickandmorty.util.SharedState
 import dagger.Module
 import dagger.Provides
@@ -25,16 +28,34 @@ object NetworkModule {
 
     @Provides
     @Singleton
-    fun provideRetrofit(): Retrofit {
-        return Retrofit.Builder()
+    fun provideCharacterRetrofit(): CharacterRetrofit {
+        val retrofit = Retrofit.Builder()
             .baseUrl("https://rickandmortyapi.com/api/")
             .addConverterFactory(GsonConverterFactory.create())
             .build()
+        return CharacterRetrofit(retrofit)
     }
 
     @Provides
     @Singleton
-    fun provideApiService(retrofit: Retrofit): ApiService {
-        return retrofit.create(ApiService::class.java)
+    fun provideQuizRetrofit(): QuizRetrofit {
+        val retrofit = Retrofit.Builder()
+            .baseUrl("https://rickandmortyapi-4kj3.onrender.com/")
+            .addConverterFactory(GsonConverterFactory.create())
+            .build()
+        return QuizRetrofit(retrofit)
+    }
+
+
+    @Provides
+    @Singleton
+    fun provideCharacterApiService(characterRetrofit: CharacterRetrofit): CharacterApiService {
+        return characterRetrofit.retrofit.create(CharacterApiService::class.java)
+    }
+
+    @Provides
+    @Singleton
+    fun provideQuizApiService(quizRetrofit: QuizRetrofit): QuizApiService {
+        return quizRetrofit.retrofit.create(QuizApiService::class.java)
     }
 }
